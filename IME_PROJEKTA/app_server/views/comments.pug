@@ -4,43 +4,24 @@ block content
     .container
       section.comment-list
         // First Comment
-        article.row
-          .col-md-2.col-sm-2.hidden-xs
-            figure.thumbnail
-              img.img-responsive(src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png")
-              figcaption.text-center username
-          .col-md-10.col-sm-10
-            .panel.panel-default.arrow.left
-              .panel-body
-                header.text-left
-                  .comment-user
-                    i.fa.fa-user
-                    | The person 1
-                  time.comment-date(datetime="16-12-2014 01:05")
-                    i.fa.fa-clock-o
-                    |  Dec 16, 2014
-                .comment-post
-                  p
-                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        // Second Comment
-        article.row
-          .col-md-2.col-sm-2.hidden-xs
-            figure.thumbnail
-              img.img-responsive(src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png")
-              figcaption.text-center username
-          .col-md-10.col-sm-10
-            .panel.panel-default.arrow.left
-              .panel-body
-                header.text-left
-                  .comment-user
-                    i.fa.fa-user
-                    | The person 2
-                  time.comment-date(datetime="22-12-2015 05:05")
-                    i.fa.fa-clock-o
-                    |  Dec 22, 2015
-                .comment-post
-                  p
-                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        each comment in comments
+          article.row
+            .col-md-2.col-sm-2.hidden-xs
+              figure.thumbnail
+                img.img-responsive(src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png")
+                figcaption.text-center username
+            .col-md-10.col-sm-10
+              .panel.panel-default.arrow.left
+                .panel-body
+                  header.text-left
+                    .comment-user
+                      i.fa.fa-user
+                      | #{comment.name}
+                    time.comment-date(datetime="16-12-2014 01:05")
+                      i.fa.fa-clock-o
+                      |  #{comment.date}
+                  .comment-post
+                    p=comment.comment
     .container
       .widget-area.no-padding.blank
         .status-upload
