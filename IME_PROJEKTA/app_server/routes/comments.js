@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
+var ctrlComments = require('../controllers/comments');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('comments', { title: 'Express' });
-});
+router.get('/', ctrlComments.index);
 
 module.exports = router;
+
