@@ -1,27 +1,13 @@
 extends layout
 
+include _include/commonFunctions.pug
+
 block content
     .container
       section.comment-list
         // First Comment
         each comment in comments
-          article.row
-            .col-md-2.col-sm-2.hidden-xs
-              figure.thumbnail
-                img.img-responsive(src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png")
-                figcaption.text-center username
-            .col-md-10.col-sm-10
-              .panel.panel-default.arrow.left
-                .panel-body
-                  header.text-left
-                    .comment-user
-                      i.fa.fa-user
-                      | #{comment.name}
-                    time.comment-date(datetime="16-12-2014 01:05")
-                      i.fa.fa-clock-o
-                      |  #{comment.date}
-                  .comment-post
-                    p=comment.comment
+          +showComment(comment.name, comment.date, comment.comment)
     .container
       .widget-area.no-padding.blank
         .status-upload
