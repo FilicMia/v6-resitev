@@ -25,13 +25,13 @@ block content
     .container
       .widget-area.no-padding.blank
         .status-upload
-          form
+          form#commentForma
             .form-group
               label(for="username") Name:
-              input.form-control(type="text" name="username")
+              input.form-control(type="text" name="username" id="name")
             .form-group
               label(for="comment") Comment:
-              textarea.form-control(rows="5" name="comment")
+              textarea.form-control(rows="5" name="comment" id="comment")
             .form-group
               label(for="picupload") Upload Image
               .input-group
