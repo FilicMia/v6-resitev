@@ -5,9 +5,9 @@ include _include/commonFunctions.pug
 block content
     .container
       section.comment-list
-        // First Comment
         each comment in comments
           +showComment(comment.name, comment.date, comment.comment)
+        
     .container
       .widget-area.no-padding.blank
         .status-upload

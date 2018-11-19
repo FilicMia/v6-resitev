@@ -4,15 +4,15 @@ mixin showComment(name, date, comment)
             figure.thumbnail
                 img.img-responsive(src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png")
                 figcaption.text-center username
-            .col-md-15.col-sm-15.float-right
-                .panel.panel-default.arrow.left
-                    .panel-body
-                        header.text-left
-                            .comment-user
-                                i.fa.fa-user
-                                | #{name}
-                            time.comment-date(datetime="16-12-2014 01:05")
-                                i.fa.fa-clock-o
-                                |  #{date}
-                        .comment-post
-                            p=comment
+        .col-md-10.col-sm-10
+            .panel.panel-default.arrow.left
+                .panel-body
+                    header.text-left
+                        .comment-user
+                            i.fa.fa-user
+                            | #{name}
+                        time.comment-date(datetime="16-12-2014 01:05")
+                            i.fa.fa-clock-o
+                            |  #{date}
+                    .comment-post
+                        p=comment
