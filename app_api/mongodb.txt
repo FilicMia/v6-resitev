@@ -17,3 +17,13 @@ mongorestore -h ds115874.mlab.com:15874 -d comments -u user ~/workspace/mongodb/
 
 //set to use Heroku on production
 heroku config:set NODE_ENV=production
+
+//set MLAB_URI on heroku so that on production we get data from there
+heroku config:set MLAB_URI=mongodb://user:password1@ds115874.mlab.com:15874/comments
+
+
+//test production mLab on local
+DB_URI=mongodb://user:password1@ds115874.mlab.com:15874/comments nodemon
+
+//test production mLab on heroku - go to
+https://drugo-ime238.herokuapp.com/api/comments

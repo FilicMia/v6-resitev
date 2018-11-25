@@ -4,7 +4,12 @@ var mongoose = require('mongoose');
 var dbURI = 'mongodb://localhost/Comments';
 if (process.env.NODE_ENV === 'production') {
   dbURI = process.env.MLAB_URI;
+} 
+
+if(process.env.DB_URI){
+  dbURI = process.env.DB_URI;
 }
+
 mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true });
 
 mongoose.connection.on('connected', function() {
