@@ -4,7 +4,12 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+
+//add path to the REST api
+require('./app_api/models/db');
+
 var indexRouter = require('./app_server/routes/index');
+var indexApi = require('./app_api/routes/index');
 var commentsRouter = require('./app_server/routes/comments');
 var usersRouter = require('./app_server/routes/users');
 
@@ -21,6 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/api', indexApi);
 app.use('/comments', commentsRouter);
 app.use('/users', usersRouter);
 

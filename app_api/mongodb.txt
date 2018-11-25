@@ -1,0 +1,19 @@
+11.1.5
+
+URI:
+mongodb://user:password1@ds115874.mlab.com:15874/comments
+
+in shell:
+mongo ds115874.mlab.com:15874/comments -u user -p password1
+
+//Then we add the database to the Herook environment parameters
+heroku config:set MLAB_URI=mongodb://user:password1@ds115874.mlab.com:15874/comments
+
+//transfer database
+mongodump -h localhost:27017 -d Comments -o ~/workspace/mongodb/dump
+
+//store to mlab
+mongorestore -h ds115874.mlab.com:15874 -d comments -u user ~/workspace/mongodb/dump/Comments
+
+//set to use Heroku on production
+heroku config:set NODE_ENV=production
