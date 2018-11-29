@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function(){
     console.log(forma);
     
     var btn = forma.getElementsByTagName('button')[0];
-    btn.addEventListener('click', function() {
+    btn.addEventListener('click', function(event) {
         //check imput fields.
         var nameInput = document.getElementById('name').value;
         var commentInput = document.getElementById('comment').value;
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function(){
         console.log(commentInput);
         
         var nameReg = new RegExp("^[0-9a-zčćžšđ]{1,6}$");
-        var commentReg = new RegExp("^.{0,500}$");
+        var commentReg = new RegExp("[\w\s]{1,500}");
         
         var alertStr = "";
         
@@ -26,17 +26,18 @@ document.addEventListener('DOMContentLoaded', function(){
         }
         
         if(!commentTest){
+            console.log(commentTest);
             alertStr += "Invalid form of the comment. The comment should be "+
             "at most 500 characters long.";
         }
         
         if(!nameTest || !commentTest){
             alert(alertStr);
+            event.preventDefault();
+            
+        }else {
+            //store the data
         }
-        
-        
-        
-        
     })
     
     

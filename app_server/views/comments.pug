@@ -11,10 +11,10 @@ block content
     .container
       .widget-area.no-padding.blank
         .status-upload
-          form#commentForma
+          form#commentForma(action="/comments/new", method="post", role="form")
             .form-group
               label(for="username") Name:
-              input.form-control(type="text" name="username" id="name")
+              input.form-control(type="text" name="name" id="name")
             .form-group
               label(for="comment") Comment:
               textarea.form-control(rows="5" name="comment" id="comment")
@@ -25,7 +25,7 @@ block content
                   span.btn.btn-default.btn-file
                     | Browse… 
                     input#imgInp(type="file")
-                input.form-control(type="text" name="picupload")
+                input.form-control(type="text" name="pic")
               div
                 img#img-upload
             button.btn.btn-success.green(type="submit")

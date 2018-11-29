@@ -5,11 +5,11 @@ var ctrComments = require('../controllers/comments');
 /* Comments */
 router.get('/comments', ctrComments.getAll);
 
-router.post('/comments', ctrComments.createNew);
+router.post('/comments/new', ctrComments.createNew);
 
-router.get('/comment/:idComment', ctrComments.getById);
+router.get('/comments/name', ctrComments.getByName);
 
-router.delete('/comment/:idComment', ctrComments.deleteById);
+//router.delete('/comment/:idComment', ctrComments.deleteById);
 
 /* Other */
 //for now none

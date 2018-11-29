@@ -6,15 +6,15 @@ var paramsApi = {
   apiCommentsURI: '/api/comments'
 };
 if (process.env.NODE_ENV === 'production') {
-  paramsApi.server = 'https://drugo-ime238.herokuapp.com/';
-  paramsApi.apiCommentsURI = 'api/comments';
+  paramsApi.server = 'https://drugo-ime238.herokuapp.com';
+  paramsApi.apiCommentsURI = '/api/comments';
 }
 
 // return function
 var listRender = function(req, res, content){
     /*Get rest api data*/
-var apiData = {comments: content};
-    res.render('comments', apiData);
+  var apiData = {comments: content};
+      res.render('comments', apiData);
 }
 
 /* GET home page */
@@ -32,3 +32,54 @@ module.exports.index = function(req, res) {
     }
   );
 };
+
+/* Create new comment.   */
+module.exports.newComment = function(req, res) {
+  var datetime = new Date();
+  var path = paramsApi.apiCommentsURI + '/new';
+  var dataToSend = {
+    name: req.body.name,
+    comment: req.body.comment,
+    pic: "",
+    date: datetime
+  };
+  
+  var paramsReq = {
+    url: paramsApi.server + path,
+    method: 'POST',
+    json: dataToSend,
+  };
+  request(
+    paramsReq,
+    function(error, response, content) {
+      if (!error || error.statusCode === 201) {
+        res.redirect('/comments');
+      } else {
+        res.render('error', error);
+      } 
+    }
+  );
+};
+
+/* Get all with the certain name.   */
+module.exports.getCommentsWithName = function(req, res) {
+  var datetime = new Date();
+  var path = paramsApi.apiCommentsURI + '/name?name='+req.query.name;
+  
+  var paramsReq = {
+    url: paramsApi.server + path,
+    method: 'GET',
+    json: {},
+  };
+  request(
+    paramsReq,
+    function(error, response, content) {
+      if (!error || error.statusCode === 201) {
+        listRender(req, res, content);
+      } else {
+        res.render('error', error);
+      } 
+    }
+  );
+};
+
