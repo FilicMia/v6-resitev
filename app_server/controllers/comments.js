@@ -62,9 +62,8 @@ module.exports.newComment = function(req, res) {
 };
 
 /* Get all with the certain name.   */
-module.exports.getCommentsWithName = function(req, res) {
-  var datetime = new Date();
-  var path = paramsApi.apiCommentsURI + '/name?name='+req.query.name;
+module.exports.getCommentsByName = function(req, res) {
+  var path = paramsApi.apiCommentsURI + '/search?name='+req.query.name;
   
   var paramsReq = {
     url: paramsApi.server + path,
@@ -76,6 +75,27 @@ module.exports.getCommentsWithName = function(req, res) {
     function(error, response, content) {
       if (!error || error.statusCode === 201) {
         listRender(req, res, content);
+      } else {
+        res.render('error', error);
+      } 
+    }
+  );
+};
+
+module.exports.deleteById = function(req, res) {
+  console.log("Server req to delete comment "+req.body._id);
+  var path = paramsApi.apiCommentsURI + '/'+req.body._id;
+
+  var paramsReq = {
+    url: paramsApi.server + path,
+    method: 'DELETE',
+    json: {},
+  };
+  request(
+    paramsReq,
+    function(error, response, content) {
+      if (!error || error.statusCode === 201) {
+        res.redirect('/comments');
       } else {
         res.render('error', error);
       } 

@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', function(){
         console.log(nameInput);
         console.log(commentInput);
         
-        var nameReg = new RegExp("^[0-9a-zčćžšđ]{1,6}$");
-        var commentReg = new RegExp("[\w\s]{1,500}");
+        var nameReg = new RegExp("^[0-9a-zčćžšđ]{1,6}$", "i");
+        var commentReg = new RegExp("[\w\s]{1,500}", "i");
         
         var alertStr = "";
         

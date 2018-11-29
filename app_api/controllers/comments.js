@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var Comment = mongoose.model('Comment');//model name, the same as for 
+var Comment = mongoose.model('Comment');//model name
 
 var JSONcallback = function(res, status, msg) {
   res.status(status);
@@ -37,7 +37,7 @@ module.exports.createNew = function(req, res) {
     });
 };
 
-module.exports.getByName = function(req, res) {
+module.exports.getCommentsByName = function(req, res) {
     Comment.find({
         name: req.query.name
     }, function(error, data){
@@ -49,7 +49,13 @@ module.exports.getByName = function(req, res) {
     });
 };
 
-module.exports.deleteById = function(req, res) {
-    JSONcallback(res, 200, {"status": "uspešno"});
+module.exports.deleteCommentById = function(req, res) {
+    console.log(req.params.idComment);
+    Comment.deleteOne({ _id: req.params.idComment }, function (error, content) {
+    if (error) {
+      
+    } else {
+       JSONcallback(res, 200, {"status": content});
+    }});
 };
 

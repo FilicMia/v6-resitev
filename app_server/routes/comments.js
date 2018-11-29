@@ -9,7 +9,9 @@ router.post('/new', ctrlComments.newComment);
 
 //search by the name
 //get all comments with the certain name
-router.get('/name', ctrlComments.getCommentsWithName);
+router.get('/search', ctrlComments.getCommentsByName);
+
+router.post('/delete', ctrlComments.deleteById);
 
 module.exports = router;
 

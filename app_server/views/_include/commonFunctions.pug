@@ -1,4 +1,4 @@
-mixin showComment(name, date, comment)
+mixin showComment(comment)
     article.row
         .col-md-2.col-sm-2.hidden-xs
             figure.thumbnail
@@ -10,9 +10,13 @@ mixin showComment(name, date, comment)
                     header.text-left
                         .comment-user
                             i.fa.fa-user
-                            | #{name}
+                            | #{comment.name}
                         time.comment-date(datetime="16-12-2014 01:05")
                             i.fa.fa-clock-o
-                            |  #{date}
+                            |  #{comment.date}
                     .comment-post
-                        p=comment
+                        p=comment.comment
+                    form.navbar-form.navbar-left(action="/comments/delete" method="post")
+                        .form-group
+                            input.form-control.hidden(type="text" value=comment._id name="_id")
+                        button.btn.btn-default#delete(type="Submit") Delete
