@@ -66,5 +66,6 @@ $ cd ~/workspace/v4-resitev
 ~/workspace/v4-resitev (master) $ heroku config:set NODE_ENV=production
 ~~~~
 
+
 Note that the collections' names of the local and mLabl database MUST match complitely (case as well)!
 The database names can differ.
