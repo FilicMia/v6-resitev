@@ -232,6 +232,11 @@ $ mongoimport --db Comments --collection Comments --mode upsert --upsertFields n
 
 Nato preverite delovanje vašega REST API-ja. Uporabite API v aplikaciji za kreiranje novega komentarija preko obrazca za komentarje in za branje določenega komentarija preko navigacijske vrstice obrazca (`Search`).
 
+### Dohvačanje poddokumentov
+~~~~ {.bash}
+db.Comments.find({"_id": "5c07b5e48eac3600d3e99c07", "embededDocFieldNameInCommentDoc._id": "5c07b9548eac3600d3e99c0c"})
+~~~~
+
 ## Uporaba podatkovne baze mLab
 
 Najprej ustvarite račun za uporabo platforme mLab, kjer boste gostovali svojo MongoDB podatkovno bazo. Navodila za uporaba mLab okolja so dostopna tudi v poglavju [Gostovanje MongoDB podatkovne baze na mLab](#Gostovanje-mLab) predavanja <span class="sklop3">P3.2</span>.
