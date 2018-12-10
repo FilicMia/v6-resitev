@@ -250,7 +250,7 @@ mongorestore -h ds{koda-mLab-baze}.mlab.com:{koda-mLab-baze} -d comments -u user
 * spremembe naj vključuje privzeto uporabo lokalne podatkovne v lokalnem razvojnem okolju in samodejno uporabo mLab podatkovne baze v okolju Heroku.
 
 > **Namig**: Ustrezno nastavite okoljsko spremenljivko *MLAB_URI*, da bo aplikacija uporabljala podatkovno bazo na mLab.
-  `heroku login`
+  `heroku login -i`
   ` heroku git:remote -a IME_APLIKACIJE`
   `git push heroku master `
   `heroku config:set MLAB_URI=mongodb://{user}:{pass}@ds{koda-mLab-baze}.mlab.com:{koda-mLab-baze}/{database-name}`
