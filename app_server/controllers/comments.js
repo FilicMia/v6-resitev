@@ -13,44 +13,17 @@ if (process.env.NODE_ENV === 'production') {
 // return function
 var listRender = function(req, res, content){
     /*Get rest api data*/
-  var apiData = {comments: content};
-      res.render('comments', apiData);
+  var apiData = content;
+  if(!apiData['comments'])
+      apiData = {comments: content};
+  res.render('comments', apiData);
 }
 
-/* GET home page
-module.exports.index = function(req, res) {
-  var path = paramsApi.apiCommentsURI;
-  var paramsReq = {
-    url: paramsApi.server + path,
-    method: 'GET',
-    json: {},
-  };
-  request(
-    paramsReq,
-    function(error, response, content) {
-      listRender(req, res, content);    
-    }
-  );
-}; */
+/* GET home page*/
 
-// Or with request-promise - almost the same.
-// Remember that ALL of those callback functions are executed async. 
-var rp = require('request-promise');
+var JSONdata = require('../models/comments.json');
 module.exports.index = function(req, res) {
-  var path = paramsApi.apiCommentsURI;
-  var paramsReq = {
-    url: paramsApi.server + path,
-    method: 'GET',
-    json: true, //parse response to json (IMPORTANT)
-  };
-  rp(paramsReq)
-  .then(
-    function(content) {
-      listRender(req, res, content);    
-    })
-  .catch(function (err) {
-      res.render('error',err);
-  });
+  res.render('comments');
 };
 
 /* Create new comment.   */

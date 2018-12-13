@@ -4,10 +4,12 @@ include _include/commonFunctions.pug
 
 block content
     .container
-      section.comment-list
-        each comment in comments
-          +showComment(comment)
-        
+      section.comment-list(ng-controller="listCommentsCtrl")
+        label(for="filter") Search by name
+        input#filter(type="text" name='filter' ng-model='search.name')
+        .container-article(ng-repeat="comment in data.comments | filter:search:strict")
+          article.row(show-comment, tempcomment="comment")
+          
     .container
       .widget-area.no-padding.blank
         .status-upload
@@ -34,4 +36,4 @@ block content
         // Status Upload
       // Widget Area
     
-    script(src="/javascripts/comments.js")
+    //script(src="/javascripts/comments.js")
