@@ -1,12 +1,12 @@
-//get data fja
-function commentsDataF($http){
-  return $http.get('api/comments');
-}
-
 function commentsData($http) {
-  var data = commentsDataF($http);
   
-  return {'comments': data};
+  var data = function(){
+                return $http.get('api/comments');
+              };
+
+  return {
+    'comments': data
+  };
 }
 
 /* global commentsApp */

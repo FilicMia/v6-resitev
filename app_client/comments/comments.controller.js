@@ -1,17 +1,8 @@
-// api request
-function commentsData($http){
-  return $http.get('api/comments');
-}
-
-function commentsCtrl($http) {
+function commentsCtrl(commentsData) {
   var vm = this;
-  
   vm.title = 'Comments';
   vm.msg = "Searching comments...";
-  var data = commentsData($http);
-  
-  // api processing
-  data.then(
+  commentsData.comments().then(
     function succes(response){
       vm.msg = response.data.length > 0 ? "" : "No comments.";
       vm.data = {'comments': response.data};
@@ -24,4 +15,4 @@ function commentsCtrl($http) {
 
 /* global commentsApp */
 commentsApp
-  .controller('commentsCtrl', ["$http", commentsCtrl]);
+  .controller('commentsCtrl', commentsCtrl);
