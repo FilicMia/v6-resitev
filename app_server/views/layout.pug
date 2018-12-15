@@ -16,10 +16,6 @@ html(lang="sl" ng-app="comments")
             a(href="/") Home
           li
             a(href="/comments") ComMENT
-        form.navbar-form.navbar-left(action="/comments/search" method="GET")
-          .form-group
-            input.form-control#searchName(type="text" placeholder="Search" name="name")
-          button.btn.btn-default#search(type="submit") Submit
           
     block content
     

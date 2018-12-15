@@ -10,20 +10,9 @@ if (process.env.NODE_ENV === 'production') {
   paramsApi.apiCommentsURI = '/api/comments';
 }
 
-// return function
-var listRender = function(req, res, content){
-    /*Get rest api data*/
-  var apiData = content;
-  if(!apiData['comments'])
-      apiData = {comments: content};
-  res.render('comments', apiData);
-}
-
-/* GET home page*/
-
-var JSONdata = require('../models/comments.json');
+/* GET home page with ANGULAR*/
 module.exports.index = function(req, res) {
-  res.render('comments');
+  res.render('comments', {urlNewCom: req.originalUrl + '/new'});
 };
 
 /* Create new comment.   */
@@ -47,27 +36,6 @@ module.exports.newComment = function(req, res) {
     function(error, response, content) {
       if (!error || error.statusCode === 201) {
         res.redirect('/comments');
-      } else {
-        res.render('error', error);
-      } 
-    }
-  );
-};
-
-/* Get all with the certain name.   */
-module.exports.getCommentsByName = function(req, res) {
-  var path = paramsApi.apiCommentsURI + '/search?name='+req.query.name;
-  
-  var paramsReq = {
-    url: paramsApi.server + path,
-    method: 'GET',
-    json: {},
-  };
-  request(
-    paramsReq,
-    function(error, response, content) {
-      if (!error || error.statusCode === 201) {
-        listRender(req, res, content);
       } else {
         res.render('error', error);
       } 

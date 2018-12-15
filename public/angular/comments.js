@@ -2,12 +2,14 @@
 /* global angular, $http */
 var commentsApp = angular.module('comments', []);
 
+// api request
 var commentsData = function($http){
     return $http.get('api/comments');
 }
 
+// service to list comments
 var listCommentsCtrl = function($scope, commentsData){
-    $scope.msg = "Searching comments.";
+    $scope.msg = "Searching comments...";
     commentsData.then(
         function succes(response){
             $scope.msg = response.data.length > 0 ? "" : "No comments.";
@@ -19,6 +21,7 @@ var listCommentsCtrl = function($scope, commentsData){
         });
 };
 
+// directive for reusability of components
 var showComment = function() {
     return {
         scope: {comment: "=tempcomment"},

@@ -1,10 +1,9 @@
 extends layout
 
-include _include/commonFunctions.pug
-
 block content
+  .container(ng-controller="listCommentsCtrl")
     .container
-      section.comment-list(ng-controller="listCommentsCtrl")
+      section.comment-list
         label(for="filter") Search by name
         input#filter(type="text" name='filter' ng-model='search.name')
         .container-article(ng-repeat="comment in data.comments | filter:search:strict")
@@ -13,7 +12,7 @@ block content
     .container
       .widget-area.no-padding.blank
         .status-upload
-          form#commentForma(action="/comments/new", method="post", role="form")
+          form#commentForma(action=urlNewCom method="post" role="form")
             .form-group
               label(for="username") Name:
               input.form-control(type="text" name="name" id="name")

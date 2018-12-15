@@ -5,7 +5,7 @@
 ~/workspace $ git clone <URL-to-repo>
 ~/workspace $ cd <repo>
 
-~/workspace/v4-resitev (master) $ npm install //set express app  
+~/workspace/v5 (master) $ npm install //set express app  
 ~~~~
 
 ## Cerate the local database
@@ -26,7 +26,7 @@ $ sudo apt-get install mongodb-org-server
 
 ### Create local serving system
 ~~~~ {.bash}
-~/workspace/v4-resitev (master) $ cd ~/workspace
+~/workspace/v5 (master) $ cd ~/workspace
 ~/workspace $ mkdir mongodb
 ~/workspace $ cd mongodb
 
@@ -44,13 +44,13 @@ $ sudo apt-get install mongodb-org-server
 Do this in new terminal. You need to leave the database to be served to access it.
 
 ~~~~ {.bash}
-$ mongoimport --db Comments --collection Comments --mode upsert --upsertFields name --jsonArray --file ~/workspace/v4-resitev/app_server/models/comments-mongodb.json
+$ mongoimport --db Comments --collection Comments --mode upsert --upsertFields name --jsonArray --file ~/workspace/v5/app_server/models/comments-mongodb.json
 ~~~~
 
 ## Start the app
 ~~~~ {.bash}
-~/workspace (master) $ cd ~/workspace/v4-resitev
-~/workspace/v4-resitev (master) $ npm start
+~/workspace (master) $ cd ~/workspace/v5
+~/workspace/v5 (master) $ npm start
 ~~~~
 
 # Host on Heroku (by your account)
@@ -59,11 +59,11 @@ $ mongoimport --db Comments --collection Comments --mode upsert --upsertFields n
 $ curl https://cli-assets.heroku.com/install.sh | sh
 $ sudo ln -s /usr/local/bin/heroku /usr/bin/heroku
 $ heroku login -i
-$ cd ~/workspace/v4-resitev
-~/workspace/v4-resitev (master) $ heroku create
-~/workspace/v4-resitev (master) $ git push heroku master
-~/workspace/v4-resitev (master) $ heroku config:set MLAB_URI=mongodb://{user}:{pass}@dsX{koda-mLab-baze}.mlab.com:{koda-mLab-baze}/{database-name}
-~/workspace/v4-resitev (master) $ heroku config:set NODE_ENV=production
+$ cd ~/workspace/v5
+~/workspace/v5 (master) $ heroku create
+~/workspace/v5 (master) $ git push heroku master
+~/workspace/v5 (master) $ heroku config:set MLAB_URI=mongodb://{user}:{pass}@dsX{koda-mLab-baze}.mlab.com:{koda-mLab-baze}/{database-name}
+~/workspace/v5 (master) $ heroku config:set NODE_ENV=production
 ~~~~
 
 
