@@ -174,9 +174,7 @@ It is high time to make an usage of our service.
 As in `Express` application. We make an usage
 of the data retrival in controllers.
 
-We use the service in the `comments.controller.js`
-
-MIAMAIMAI
+We use the service in the `comments.controller.js`.
 
 
 
