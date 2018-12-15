@@ -10,8 +10,8 @@ require('./app_api/models/db');
 
 var indexRouter = require('./app_server/routes/index');
 var indexApi = require('./app_api/routes/index');
-var commentsRouter = require('./app_server/routes/comments');
-var usersRouter = require('./app_server/routes/users');
+//var commentsRouter = require('./app_server/routes/comments');
+//var usersRouter = require('./app_server/routes/users');
 
 var app = express();
 
@@ -28,8 +28,10 @@ app.use(express.static(path.join(__dirname, 'app_client')));
 
 app.use('/', indexRouter);
 app.use('/api', indexApi);
-app.use('/comments', commentsRouter);
-app.use('/users', usersRouter);
+
+// Not needed for Angular Application as routing is now in angular
+//app.use('/comments', commentsRouter);
+//app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

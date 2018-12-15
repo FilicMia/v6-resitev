@@ -54,7 +54,7 @@ Korenska datotek SPA aplikacije je obično ena datoteka v mapi "app_client". V n
 
 * Ustvarite nov Express-krmilnik za posredovanje predloge strani (`layout`),
 * Dodajte Angular usmerjanje ngRoute v aplikacijo: 
-*funkcionalnost je na voljo kot del AngularJS kot ločena datoteka, ki jo najdete na spletnem mestu [AngularORG](https://code.angularjs.org/).
+* Funkcionalnost je na voljo kot del AngularJS kot ločena datoteka, ki jo najdete na spletnem mestu [AngularORG](https://code.angularjs.org/).
   
 ~~~~ {.bash}
  cd app_client

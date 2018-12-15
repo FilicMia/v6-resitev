@@ -1,36 +1,23 @@
-/* global angular */
-var commentsApp = angular.module('comments', []);
+/* global angular $http */
+var commentsApp = angular.module('comments', ['ngRoute']);
 
-// api request
-var commentsData = function($http){
-    return $http.get('api/comments');
+//specification of the router provider.
+function provider($routeProvider) {
+    $routeProvider
+    .when('/', {
+        templateUrl: 'comments/comments.view.html',
+        controller: 'commentsCtrl',
+        controllerAs: 'vm'
+    })
+    .otherwise({
+    controller : function(){
+        window.location.replace('/');
+    }, 
+    template : "<div></div>"
+});
+
 }
 
-// service to list comments
-var listCommentsCtrl = function($scope, commentsData){
-    $scope.msg = "Searching comments...";
-    commentsData.then(
-        function succes(response){
-            $scope.msg = response.data.length > 0 ? "" : "No comments.";
-            $scope.data = { comments: response.data };
-        }, 
-        function error(response){
-            $scope.msg = "Error while fetching comments.";
-            console.log(response.e);
-        });
-};
-
-// directive for reusability of components
-var showComment = function() {
-    return {
-        scope: {comment: "=tempcomment"},
-        templateUrl: "/angular/template/show-comment.html"
-        
-    };
-};
-
-//dodati kontrolerja aplikaciji
 commentsApp
-.controller("listCommentsCtrl", listCommentsCtrl)
-.directive("showComment", showComment)
-.service("commentsData", commentsData);
+    .config(['$routeProvider', provider])
+

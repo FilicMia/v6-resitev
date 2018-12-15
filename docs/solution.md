@@ -69,7 +69,108 @@ theirs name (String) in the vector `[]`.
 Copy all the content of `public/comments.js` into 
 `app_client/app.js` and run the app.
 
+## Global scope
 
+Fatching the data from within 
+`$scope` variable is bad practice.
+The data can be specified for certain views
+using `controllerAs` directive.
+
+Thus, in router, for the specific controller, 
+define an variable in which you  will store all necessary data.
+`app.js`
+
+~~~~
+/* global angular $http */
+var commentsApp = angular.module('comments', ['ngRoute']);
+
+//specification of the router provider.
+function provider($routeProvider) {
+    $routeProvider
+    .when('/', {
+        templateUrl: 'comments/comments.view.html',
+        controller: 'commentsCtrl',
+        controllerAs: 'vm'
+    })
+    .otherwise({
+    controller : function(){
+        window.location.replace('/');
+    }, 
+    template : "<div></div>"
+});
+
+}
+~~~~
+
+
+After doing so, we define the data to
+be stored inside vm, and not $scope.
+
+## Services (storitev)
+
+At this point, it would be nice 
+to have some data on the site.
+
+We want an service provider that will 
+fatch the data from our own REST API
+so we can show it on the page.
+
+### Service initialization
+
+We first create folder services inside `app_client`,
+
+~~~~ {.bash}
+ cd app_client
+ mkdir all
+ cd all
+ mkdir services
+~~~~
+
+Then we first create an service that will fatch our data.
+
+~~~~ {.bash}
+touch commentsData.service.js
+~~~~
+
+Then, we define the service and attach that
+to the root modul.
+
+`app_client/all/services/commentsData.service.js`
+
+~~~~
+//get data fja
+function commentsDataF($http){
+  return $http.get('api/comments');
+}
+
+function commentsData($http) {
+  var data = commentsDataF($http);
+  
+  return {'comments': data};
+}
+
+
+// attach it to the application
+/* global commentsApp */
+commentsApp
+.service('commentsData', commentsData);
+~~~~
+
+And define it in `layout.pug`, the main 
+views file.
+
+~~~~{.bash}
+    script(src='/angular/angular.min.js')
+    script(src='/lib/angular-route.min.js')
+    script(src='/app.js')
+    script(src='/comments/comments.controller.js')
+    
+    script(src='/all/services/commentsData.service.js')
+~~~~
+
+### Usage of the service
+ It is high time to make an usage of our service.
+ 
 
 
 
