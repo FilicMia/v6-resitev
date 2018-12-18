@@ -19,5 +19,13 @@ function provider($routeProvider) {
 }
 
 commentsApp
-    .config(['$routeProvider', provider])
+    .config(['$routeProvider', provider]);
+    
+// no ! prefix
+commentsApp.config(['$locationProvider', function($locationProvider) {
+  $locationProvider.hashPrefix('');
+  
+  //no # prefix in routes
+  $locationProvider.html5Mode(true);
+}]);
 
