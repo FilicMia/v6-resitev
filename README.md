@@ -1,3 +1,15 @@
+
+> Warning: For the LP4, be careful to meet prerequerities whithout which your work won't be scored: 
+>
+> 1. There is a *valid* commitment link submitted on učilnica (If you don't fell like bothering with giving a specific acess
+>to the `AssistentFRI` just make your repository public after the submission deadline. :) )
+>2. dynamic part is not hardcoded, i.e. written in PUG, 
+>3. your application is using your REST API to fatch the data from the database, 
+>4. you have published your application on Heroku, 
+>5. I can run your application locally fillowing your instructions (you may assime that I have mongoDB installed, and that those instructions will be run inside cloud9 enviroment and NOTHING else.) When running the application locally, I am an ordinary programmer, I do not know this specific tehnology. (5) application is not working properlly (really annoying broken links, functionalities that should have been presented (excluding login) with wireframes in LP1 are not present or not working (adding, deleting, editing, search, master-detail, listing one type of documents on the page). You have to implement them so that I can feel 
+>that those functionalities are actually working (as an user - ordinary or admin - and not as a programer).
+
+
 # Quick start
 
 ## Download the source code
@@ -69,18 +81,3 @@ $ cd ~/workspace/v5
 
 Note that the collections' names of the local and mLabl database MUST match complitely (case as well)!
 The database names can differ.
-
-> Warning: For the LP4, be careful to meet prerequerities whithout which your work won't
-be scored: 
-(1) dynamic part is not hardcoded, i.e. written in PUG,
-(2) your application is using your REST API to fatch the data from the database,
-(3) you have published your application on Heroku,
-(4) I can run your application locally fillowing your instructions (you may assime that
-I have mongoDB installed, and that those instructions will be run inside cloud9 enviroment and
-NOTHING else.) When running the application locally, I am an ordinary programmer, I
-do not know this specific tehnology.
-(5) application is not working properlly (really annoying broken links, functionalities
-that should have been presented (excluding login) with wireframes in `LP1` are not present or not working
-(adding, deleting, editing, search, master-detail, listing one type of documents on the page).
-You have to implement them so that I can `feel` that those functionalities are actually working 
-(as an user - ordinary or admin - and not as a programer).
