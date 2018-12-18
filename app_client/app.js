@@ -3,6 +3,7 @@ var commentsApp = angular.module('comments', ['ngRoute']);
 
 //specification of the router provider.
 function provider($routeProvider) {
+
     $routeProvider
     .when('/', {
         templateUrl: 'comments/comments.view.html',
@@ -14,7 +15,7 @@ function provider($routeProvider) {
         window.location.replace('/');
     }, 
     template : "<div></div>"
-});
+    });
 
 }
 
@@ -24,8 +25,5 @@ commentsApp
 // no ! prefix
 commentsApp.config(['$locationProvider', function($locationProvider) {
   $locationProvider.hashPrefix('');
-  
-  //no # prefix in routes
-  $locationProvider.html5Mode(true);
 }]);
 

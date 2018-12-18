@@ -1,7 +1,7 @@
 function commentsData($http) {
   
   var data = function(){
-                return $http.get('api/comments');
+                return $http.get('/api/comments');
               };
 
   return {
