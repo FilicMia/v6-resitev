@@ -2,7 +2,7 @@
 var commentsApp = angular.module('comments', ['ngRoute']);
 
 //specification of the router provider.
-function provider($routeProvider) {
+function provider($routeProvider, $locationProvider) {
 
     $routeProvider
     .when('/', {
@@ -16,11 +16,17 @@ function provider($routeProvider) {
     }, 
     template : "<div></div>"
     });
-
+    
+    //Remove #:
+    //1.We will use the $locationProvider module and set html5Mode to true.
+    //2. then remove all preceding # for relative routes (i.e. '#/comments' 
+    //to '/comments')
+    //3. 
+    $locationProvider.html5Mode(true);
 }
 
 commentsApp
-    .config(['$routeProvider', provider]);
+    .config(['$routeProvider','$locationProvider', provider]);
     
 // for no ! prefix
 // uncomment the next section

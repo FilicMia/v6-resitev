@@ -2,6 +2,7 @@ doctype html
 html(lang="sl" ng-app="comments")
   head
     meta(http-equiv="Content-Type" content="text/html; charset=UTF-8")
+    base(href="/")
     title ComMENT TO BE
     meta(http-equiv="X-UA-Compatible" content="IE=edge")
     meta(name="viewport" content="width=device-width, initial-scale=1")
@@ -15,7 +16,7 @@ html(lang="sl" ng-app="comments")
           li
             a(href="/") Home
           li
-            a(href="#/comments") ComMENT
+            a(href="/comments") ComMENT
       
     div(ng-view)    
       block content
