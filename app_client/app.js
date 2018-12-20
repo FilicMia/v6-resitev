@@ -25,7 +25,7 @@ commentsApp
 // for no ! prefix
 // uncomment the next section
 
-/*commentsApp.config(['$locationProvider', function($locationProvider) {
+commentsApp.config(['$locationProvider', function($locationProvider) {
   $locationProvider.hashPrefix('');
-}]);*/
+}]);
 
