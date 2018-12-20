@@ -22,8 +22,10 @@ function provider($routeProvider) {
 commentsApp
     .config(['$routeProvider', provider]);
     
-// no ! prefix
-commentsApp.config(['$locationProvider', function($locationProvider) {
+// for no ! prefix
+// uncomment the next section
+
+/*commentsApp.config(['$locationProvider', function($locationProvider) {
   $locationProvider.hashPrefix('');
-}]);
+}]);*/
 
