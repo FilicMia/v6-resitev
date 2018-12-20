@@ -82,4 +82,23 @@ $ cd ~/workspace/v5
 Note that the collections' names of the local and mLabl database MUST match complitely (case as well)!
 The database names can differ.
 
+# SOLUTION 
+Step by step solution explained in words can be found under 
+[`docs/solution.md`](https://bitbucket.org/mfilic/v5-resitev/src/master/docs/solution.md).
+It contains all we did on excercises.
+
+It is the solution up to the [commit](https://bitbucket.org/mfilic/v5-resitev/commits/9f17e0):
+> reset up to the solutions done on excercises
+
+The source code up to that commit downloaded with the following. 
+
+~~~~.bash
 git clone https://bitbucket.org/mfilic/v5-resitev/commits/9f17e0
+~~~~
+
+or, if you have already downloader `v5-resitev`, with the following.
+
+~~~~.bash
+cd v5-resitev
+git reset --hard 9f17e0
+~~~~
