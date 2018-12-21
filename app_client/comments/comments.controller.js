@@ -1,3 +1,4 @@
+(function() {
 function commentsCtrl(commentsData) {
   var vm = this;
   vm.title = 'Comments';
@@ -12,7 +13,11 @@ function commentsCtrl(commentsData) {
       console.log(response.e);
     });
 }
+commentsCtrl.$inject = ['commentsData'];
 
-/* global commentsApp */
-commentsApp
+/* global angular */
+angular
+  .module('comments')
   .controller('commentsCtrl', commentsCtrl);
+  
+})();

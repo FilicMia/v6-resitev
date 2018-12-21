@@ -1,5 +1,4 @@
-/* global angular $http */
-var commentsApp = angular.module('comments', ['ngRoute']);
+(function() {
 
 //specification of the router provider.
 function provider($routeProvider, $locationProvider) {
@@ -11,10 +10,8 @@ function provider($routeProvider, $locationProvider) {
         controllerAs: 'vm'
     })
     .otherwise({
-    controller : function(){
-        window.location.replace('/');
-    }, 
-    template : "<div></div>"
+        controller : 'otherCtrl', 
+        template : "<div></div>"
     });
     
     //Remove #:
@@ -23,15 +20,12 @@ function provider($routeProvider, $locationProvider) {
     //to '/comments')
     //3. put base in html head tag, like: `base(href='/')`
     $locationProvider.html5Mode(true);
+    $locationProvider.hashPrefix('');
 }
 
-commentsApp
+/* global angular */
+angular
+    .module('comments',['ngRoute'])
     .config(['$routeProvider','$locationProvider', provider]);
-    
-// for no ! prefix
-// uncomment the next section
 
-commentsApp.config(['$locationProvider', function($locationProvider) {
-  $locationProvider.hashPrefix('');
-}]);
-
+})();
