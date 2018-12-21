@@ -1,6 +1,6 @@
 /* Vrni začetno stran s seznamom lokacij */
 //var dataJSON = require('../models/comments.json');
-var request = require('request');
+/*var request = require('request');
 var paramsApi = {
   server: 'http://localhost:' + process.env.PORT,
   apiCommentsURI: '/api/comments'
@@ -10,12 +10,14 @@ if (process.env.NODE_ENV === 'production') {
   paramsApi.apiCommentsURI = '/api/comments';
 }
 
-/* GET home page with ANGULAR*/
+/* GET home page with ANGULAR
 module.exports.index = function(req, res) {
   res.render('comments', {urlNewCom: req.originalUrl + '/new'});
 };
+*/
 
 /* Create new comment.   */
+/*
 module.exports.newComment = function(req, res) {
   var datetime = new Date();
   var path = paramsApi.apiCommentsURI + '/new';
@@ -64,3 +66,4 @@ module.exports.deleteById = function(req, res) {
   );
 };
 
+*/

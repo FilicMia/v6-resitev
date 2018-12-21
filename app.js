@@ -8,10 +8,10 @@ var logger = require('morgan');
 //add path to the REST api
 require('./app_api/models/db');
 
-var indexRouter = require('./app_server/routes/index');
+//var indexRouter = require('./app_server/routes/index');
 var indexApi = require('./app_api/routes/index');
 //var commentsRouter = require('./app_server/routes/comments');
-//var usersRouter = require('./app_server/routes/users');
+var usersRouter = require('./app_server/routes/users');
 
 var app = express();
 
@@ -26,12 +26,17 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'app_client')));
 
-app.use('/', indexRouter);
+//app.use('/', indexRouter);
 app.use('/api', indexApi);
 
 // Not needed for Angular Application as routing is now in angular
 //app.use('/comments', commentsRouter);
-//app.use('/users', usersRouter);
+app.use('/users', usersRouter);
+
+//handle all the other reqs.
+app.use(function(req, res) {
+  res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
