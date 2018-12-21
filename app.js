@@ -4,6 +4,22 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+//minify part
+var uglifyJs = require('uglify-js');
+var fs = require('fs');
+
+var combinedCode = uglifyJs.minify({
+  'app.js': fs.readFileSync('app_client/app.js', 'utf-8'),
+  'commentsData.service.js': fs.readFileSync('app_client/all/services/commentsData.service.js', 'utf-8'),
+  'comments.controller.js': fs.readFileSync('app_client/comments/comments.controller.js', 'utf-8'),
+  'other.controller.js': fs.readFileSync('app_client/other.controller.js', 'utf-8')});
+
+fs.writeFile('public/angular/comments.min.js', combinedCode.code, function(error) {
+  if (error)
+    console.log(error);
+  else
+    console.log('Script is in "comments.min.js".');
+});
 
 //add path to the REST api
 require('./app_api/models/db');
