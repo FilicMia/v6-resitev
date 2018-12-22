@@ -10,8 +10,8 @@ function provider($routeProvider, $locationProvider) {
         controllerAs: 'vm'
     })
     .otherwise({
-        controller : 'otherCtrl', 
-        template : "<div></div>"
+        controller: 'otherCtrl',
+        template: '<div></div>'
     });
     
     //Remove #:
