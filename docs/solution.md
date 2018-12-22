@@ -463,9 +463,10 @@ commentsApp
 Run the app, it should display comments under the main page.
 For any further questions/recommendations/errors, send an e-mail to the assistent.
 
-## Extra
-[https://scotch.io/tutorials/pretty-urls-in-angularjs-removing-the-hashtag]
-
+## Going further
+* [https://scotch.io/tutorials/pretty-urls-in-angularjs-removing-the-hashtag](Removing hashtag),
+* Nice [https://johnpapa.net/angularjss-controller-as-and-the-vm-variable/](article) on using `ControllerAs`, as well as the discussion
+ on [https://stackoverflow.com/questions/22285597/angularjs-why-use-controller-as-vm](stackoverflow)
 
 
 
