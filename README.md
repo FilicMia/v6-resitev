@@ -3,12 +3,32 @@
 >
 > 1. There is a *valid* commitment link submitted on učilnica (If you don't fell like bothering with giving a specific acess
 >to the `AssistentFRI` just make your repository public after the submission deadline. :) )
->2. dynamic part is not hardcoded, i.e. written in PUG, 
+>2. dynamic part is not hardcoded, i.e. written in HTML, 
 >3. your application is using your REST API to fatch the data from the database, 
 >4. you have published your application on Heroku, 
 >5. I can run your application locally fillowing your instructions (you may assime that I have mongoDB installed, and that those instructions will be run inside cloud9 enviroment and NOTHING else.) When running the application locally, I am an ordinary programmer, I do not know this specific tehnology. (5) application is not working properlly (really annoying broken links, functionalities that should have been presented (excluding login) with wireframes in LP1 are not present or not working (adding, deleting, editing, search, master-detail, listing one type of documents on the page). You have to implement them so that I can feel 
 >that those functionalities are actually working (as an user - ordinary or admin - and not as a programer).
 
+# SOLUTION 
+Step by step solution explained in words can be found under 
+[`docs/solution.md`](https://bitbucket.org/mfilic/v5-resitev/src/master/docs/solution.md).
+It contains all we did on excercises.
+
+It is the solution up to the [commit](https://bitbucket.org/mfilic/v5-resitev/commits/9f17e0):
+> reset up to the solutions done on excercises
+
+The source code up to that commit downloaded with the following. 
+
+~~~~.bash
+git clone https://bitbucket.org/mfilic/v5-resitev/commits/9f17e0
+~~~~
+
+or, if you have already downloader `v5-resitev`, with the following.
+
+~~~~.bash
+cd v5-resitev
+git reset --hard 9f17e0
+~~~~
 
 # Quick start
 
@@ -65,7 +85,8 @@ $ mongoimport --db Comments --collection Comments --mode upsert --upsertFields n
 ~/workspace/v5 (master) $ npm start
 ~~~~
 
-# Host on Heroku (by your account)
+# Final
+## Host on Heroku (by your account)
 
 ~~~~ {.bash}
 $ curl https://cli-assets.heroku.com/install.sh | sh
@@ -81,24 +102,3 @@ $ cd ~/workspace/v5
 
 Note that the collections' names of the local and mLabl database MUST match complitely (case as well)!
 The database names can differ.
-
-# SOLUTION 
-Step by step solution explained in words can be found under 
-[`docs/solution.md`](https://bitbucket.org/mfilic/v5-resitev/src/master/docs/solution.md).
-It contains all we did on excercises.
-
-It is the solution up to the [commit](https://bitbucket.org/mfilic/v5-resitev/commits/9f17e0):
-> reset up to the solutions done on excercises
-
-The source code up to that commit downloaded with the following. 
-
-~~~~.bash
-git clone https://bitbucket.org/mfilic/v5-resitev/commits/9f17e0
-~~~~
-
-or, if you have already downloader `v5-resitev`, with the following.
-
-~~~~.bash
-cd v5-resitev
-git reset --hard 9f17e0
-~~~~
