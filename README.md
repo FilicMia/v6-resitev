@@ -84,21 +84,3 @@ $ mongoimport --db Comments --collection Comments --mode upsert --upsertFields n
 ~/workspace (master) $ cd ~/workspace/v5
 ~/workspace/v5 (master) $ npm start
 ~~~~
-
-# Final
-## Host on Heroku (by your account)
-
-~~~~ {.bash}
-$ curl https://cli-assets.heroku.com/install.sh | sh
-$ sudo ln -s /usr/local/bin/heroku /usr/bin/heroku
-$ heroku login -i
-$ cd ~/workspace/v5
-~/workspace/v5 (master) $ heroku create
-~/workspace/v5 (master) $ git push heroku master
-~/workspace/v5 (master) $ heroku config:set MLAB_URI=mongodb://{user}:{pass}@dsX{koda-mLab-baze}.mlab.com:{koda-mLab-baze}/{database-name}
-~/workspace/v5 (master) $ heroku config:set NODE_ENV=production
-~~~~
-
-
-Note that the collections' names of the local and mLabl database MUST match complitely (case as well)!
-The database names can differ.
