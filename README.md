@@ -76,7 +76,7 @@ $ sudo apt-get install mongodb-org-server
 Do this in new terminal. You need to leave the database to be served to access it.
 
 ~~~~ {.bash}
-$ mongoimport --db Comments --collection Comments --mode upsert --upsertFields name --jsonArray --file ~/workspace/v5/app_server/models/comments-mongodb.json
+$ mongoimport --db Comments --collection Comments --mode upsert --upsertFields name --jsonArray --file ~/workspace/v5-resitev/app_server/models/comments-mongodb.json
 ~~~~
 
 ## Start the app
