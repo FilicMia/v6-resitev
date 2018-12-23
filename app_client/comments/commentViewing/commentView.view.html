@@ -1,0 +1,46 @@
+<naviga></naviga>
+  
+<div class="container">
+  <section class="comment-list">
+      <div class="container-article">
+        <article class='row'>
+        <div class="col-md-2 col-sm-2 hidden-xs">
+          
+          <figure class="thumbnail">
+            <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
+            <figcaption class="text-center">{{vm.general.title}}</figcaption>
+          </figure>
+          
+        </div>
+        <div class="col-md-10 col-sm-10">
+          
+          <div class="panel panel-default arrow left">
+            <div class="panel-body">
+              <header class="text-left">
+                <div class="comment-user"><i class="fa fa-user"></i>{{ vm.comment.name }}</div>
+                <time class="comment-date" datetime="16-12-2014 01:05">
+                    <i class="fa fa-clock-o"></i> {{ vm.comment.date }}</time>
+              </header>
+              <div class="comment-post">
+                <p>
+                  {{ vm.comment.comment }}
+                </p>
+              </div>
+              <form class="navbar-form navbar-left"  method="post">
+                <div class="form-group">
+                  <input class="form-control hidden" type="text" value="{{vm.comment._id}}" name="_id"/>
+                </div>
+                <button class="btn btn-default" id="delete" type="Submit">Delete</button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+        </article>
+        </div>
+
+  </section>
+  
+  <footos></footos>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/comments.css">
+</div>

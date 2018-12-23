@@ -1,5 +1,5 @@
 (function() {
-function commentsCtrl(commentsData) {
+function commentsCtrl(commentsData, $location, $scope) {
   var vm = this;
   vm.title = 'Comments';
   vm.msg = "Searching comments...";
@@ -12,8 +12,13 @@ function commentsCtrl(commentsData) {
       vm.msg = "Error while fetching comments.";
       console.log(response.e);
     });
+    $scope.redirectTo = function(id){
+
+         $location.url('/comments/'+id);
+
+        }
 }
-commentsCtrl.$inject = ['commentsData'];
+commentsCtrl.$inject = ['commentsData', '$location', '$scope'];
 
 /* global angular */
 angular

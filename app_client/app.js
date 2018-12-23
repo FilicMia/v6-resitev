@@ -9,8 +9,13 @@ function provider($routeProvider, $locationProvider) {
         controller: 'commentsCtrl',
         controllerAs: 'vm'
     })
+    .when('/comments/:idComment', {
+        templateUrl: 'comments/commentViewing/commentView.view.html',
+        controller: 'commentsViewCtrl',
+        controllerAs: 'vm'
+    })
     .otherwise({
-        controller: 'otherCtrl',
+        redirecTo: '/',
         template: '<div></div>'
     });
     

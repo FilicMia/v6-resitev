@@ -49,6 +49,17 @@ module.exports.getCommentsByName = function(req, res) {
     });
 };
 
+module.exports.getCommentsById = function(req, res) {
+    Comment.findById(
+         req.params.idComment, function(error, data){
+        if(error){
+            JSONcallback(res,400,error);
+        } else {
+            JSONcallback(res, 200, data);
+        }
+    });
+};
+
 module.exports.deleteCommentById = function(req, res) {
     console.log(req.params.idComment);
     Comment.deleteOne({ _id: req.params.idComment }, function (error, content) {

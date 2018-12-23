@@ -1,12 +1,11 @@
 <naviga></naviga>
-  
 <div class="container">
   <section class="comment-list">
       <label for="filter">Search comments</label>
       <input id="filter" type="text" name="filter" ng-model="search.name">
       
       <div class="container-article" ng-repeat="comment in vm.data.comments | filter:search:strict">
-        <article class='row'>
+        <article class='row' ng-click="redirectTo(comment._id)">
         <div class="col-md-2 col-sm-2 hidden-xs">
           
           <figure class="thumbnail">
@@ -29,12 +28,6 @@
                   {{ comment.comment }}
                 </p>
               </div>
-              <form class="navbar-form navbar-left"  method="post">
-                <div class="form-group">
-                  <input class="form-control hidden" type="text" value="{{comment._id}}" name="_id"/>
-                </div>
-                <button class="btn btn-default" id="delete" type="Submit">Delete</button>
-              </form>
             </div>
           </div>
 
