@@ -12,10 +12,9 @@ function commentsCtrl(commentsData, $location, $scope) {
       vm.msg = "Error while fetching comments.";
       console.log(response.e);
     });
-    $scope.redirectTo = function(id){
+    $scope.redirectTo = function(comment){
         //redirectTo
-         $location.url('/comments/'+id);
-
+         $location.url('/comments/'+comment._id);
         };
 }
 commentsCtrl.$inject = ['commentsData', '$location', '$scope'];

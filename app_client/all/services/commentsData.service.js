@@ -2,16 +2,21 @@
   function commentsData($http) {
     
     var data = function(){
-                  return $http.get('/api/comments');
+        return $http.get('/api/comments');
                 };
                 
     var commentById = function(commentId) {
       return $http.get('/api/comments/' + commentId);
     };
+    
+    var editCommentById = function(id, comment) {
+      return $http.post('/api/comments/edit/' + id, comment);
+    };
   
     return {
       'comments': data,
-      'commentById': commentById
+      'commentById': commentById,
+      'editCommentById': editCommentById
     };
   }
   commentsData.$inject = ['$http'];

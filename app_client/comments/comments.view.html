@@ -7,7 +7,7 @@
       <div class="container-article" ng-repeat="comment in vm.data.comments | filter:search:strict">
         <article class='row'>
           
-          <comment onecomment='comment' onclickf='redirectTo(comment._id)'></comment>
+          <comment onecomment='comment' onclickf='redirectTo(comment)'></comment>
 
         </article>
         </div>

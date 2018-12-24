@@ -1,6 +1,8 @@
 (function() {
-  function commentsViewCtrl($routeParams, commentsData) {
+  function commentsViewCtrl($routeParams, commentsData, $uibModal) {
     var vm = this;
+    
+
     vm.idComment = $routeParams.idComment;
     
     commentsData.commentById(vm.idComment)
@@ -14,13 +16,34 @@
         console.log(odgovor.e);
       });
       
-      vm.editComm = function(id){
-          
-           alert(id);
+      vm.editComm = function(id, commentData){
+        
+         var editModalWindow = $uibModal.open({
+          templateUrl: '/comments/commentEdit/commentEdit.view.html',
+          controller: 'commentEdit',
+          controllerAs: 'vm',
+          resolve: {
+            commentDetails: function() {
+              return {
+                comment: commentData
+              };
+            }
+          }
+        });
+        
+        // do not call the server for data, but update the comment list
+        // do not reftesh the site
+        editModalWindow.result.then(function(data) {
+    if (typeof data != 'undefined')
+      vm.comment = data;
+      
+      }, function(error) {
+        console.log("Error im comment View", error);
+      });
         
       };
   }
-  commentsViewCtrl.$inject = ["$routeParams", "commentsData"];
+  commentsViewCtrl.$inject = ["$routeParams", "commentsData", "$uibModal"];
   
   /* global angular */
   angular

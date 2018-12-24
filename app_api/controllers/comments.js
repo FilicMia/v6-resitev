@@ -70,3 +70,25 @@ module.exports.deleteCommentById = function(req, res) {
     }});
 };
 
+//suppode to have req.params.idComment & req.body.comment
+module.exports.editComment = function(req, res) {
+    var datetime = req.body.date;
+    if(!datetime){
+        datetime = new Date()
+    }
+
+    Comment.findByIdAndUpdate(
+         req.params.idComment, 
+         {$set: { comment: req.body.comment , date: datetime}},
+         {new: true},
+         function(error, data){
+            if(error){
+                JSONcallback(res,400,error);
+            } else {
+                if (error) return console.error(error);
+                    JSONcallback(res, 200, data);
+                    //console.log("Prior send",data);
+            }
+        });
+};
+

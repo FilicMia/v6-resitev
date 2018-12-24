@@ -7,6 +7,8 @@ router.get('/comments', ctrComments.getAll);
 
 router.post('/comments/new', ctrComments.createNew);
 
+router.post('/comments/edit/:idComment', ctrComments.editComment);
+
 router.get('/comments/:idComment', ctrComments.getCommentsById);
 
 router.get('/comments/search', ctrComments.getCommentsByName);

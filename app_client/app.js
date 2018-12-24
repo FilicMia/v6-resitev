@@ -31,5 +31,5 @@ function provider($routeProvider, $locationProvider) {
 /* global angular */
 angular
     .module('comments',['ngRoute', 'ui.bootstrap'])
-    .config(['$routeProvider','$locationProvider', provider]);
+    .config(['$routeProvider','$locationProvider',provider]);
 })();
