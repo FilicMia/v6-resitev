@@ -5,33 +5,10 @@
       <input id="filter" type="text" name="filter" ng-model="search.name">
       
       <div class="container-article" ng-repeat="comment in vm.data.comments | filter:search:strict">
-        <article class='row' ng-click="redirectTo(comment._id)">
-        <div class="col-md-2 col-sm-2 hidden-xs">
+        <article class='row'>
           
-          <figure class="thumbnail">
-            <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
-            <figcaption class="text-center">username</figcaption>
-          </figure>
-          
-        </div>
-        <div class="col-md-10 col-sm-10">
-          
-          <div class="panel panel-default arrow left">
-            <div class="panel-body">
-              <header class="text-left">
-                <div class="comment-user"><i class="fa fa-user"></i>{{ comment.name }}</div>
-                <time class="comment-date" datetime="16-12-2014 01:05">
-                    <i class="fa fa-clock-o"></i> {{ comment.date }}</time>
-              </header>
-              <div class="comment-post">
-                <p>
-                  {{ comment.comment }}
-                </p>
-              </div>
-            </div>
-          </div>
+          <comment onecomment='comment' onclickf='redirectTo(comment._id)'></comment>
 
-        </div>
         </article>
         </div>
 

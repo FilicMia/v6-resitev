@@ -13,10 +13,10 @@ function commentsCtrl(commentsData, $location, $scope) {
       console.log(response.e);
     });
     $scope.redirectTo = function(id){
-
+        //redirectTo
          $location.url('/comments/'+id);
 
-        }
+        };
 }
 commentsCtrl.$inject = ['commentsData', '$location', '$scope'];
 

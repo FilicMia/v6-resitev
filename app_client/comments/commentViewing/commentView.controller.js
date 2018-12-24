@@ -13,6 +13,12 @@
       function error(odgovor) {
         console.log(odgovor.e);
       });
+      
+      vm.editComm = function(id){
+          
+           alert(id);
+        
+      };
   }
   commentsViewCtrl.$inject = ["$routeParams", "commentsData"];
   

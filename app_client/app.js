@@ -15,7 +15,7 @@ function provider($routeProvider, $locationProvider) {
         controllerAs: 'vm'
     })
     .otherwise({
-        redirecTo: '/',
+        controller: 'otherCtrl',
         template: '<div></div>'
     });
     
@@ -30,7 +30,6 @@ function provider($routeProvider, $locationProvider) {
 
 /* global angular */
 angular
-    .module('comments',['ngRoute'])
+    .module('comments',['ngRoute', 'ui.bootstrap'])
     .config(['$routeProvider','$locationProvider', provider]);
-
 })();
