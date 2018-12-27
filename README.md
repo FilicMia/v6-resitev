@@ -9,27 +9,6 @@
 >5. I can run your application locally fillowing your instructions (you may assime that I have mongoDB installed, and that those instructions will be run inside cloud9 enviroment and NOTHING else.) When running the application locally, I am an ordinary programmer, I do not know this specific tehnology. (5) application is not working properlly (really annoying broken links, functionalities that should have been presented (excluding login) with wireframes in LP1 are not present or not working (adding, deleting, editing, search, master-detail, listing one type of documents on the page). You have to implement them so that I can feel 
 >that those functionalities are actually working (as an user - ordinary or admin - and not as a programer).
 
-# SOLUTION 
-Step by step solution explained in words can be found under 
-[`docs/solution.md`](https://bitbucket.org/mfilic/v5-resitev/src/master/docs/solution.md).
-It contains all we did on excercises.
-
-It is the solution up to the [commit](https://bitbucket.org/mfilic/v5-resitev/commits/9f17e0):
-> reset up to the solutions done on excercises
-
-The source code up to that commit downloaded with the following. 
-
-~~~~.bash
-git clone https://bitbucket.org/mfilic/v5-resitev/commits/9f17e0
-~~~~
-
-or, if you have already downloader `v5-resitev`, with the following.
-
-~~~~.bash
-cd v5-resitev
-git reset --hard 9f17e0
-~~~~
-
 # Quick start
 
 ## Download the source code
@@ -37,7 +16,7 @@ git reset --hard 9f17e0
 ~/workspace $ git clone <URL-to-repo>
 ~/workspace $ cd <repo>
 
-~/workspace/v5 (master) $ npm install //set express app  
+~/workspace/v6 (master) $ npm install //set express app  
 ~~~~
 
 ## Cerate the local database
@@ -58,7 +37,7 @@ $ sudo apt-get install mongodb-org-server
 
 ### Create local serving system
 ~~~~ {.bash}
-~/workspace/v5 (master) $ cd ~/workspace
+~/workspace/v6 (master) $ cd ~/workspace
 ~/workspace $ mkdir mongodb
 ~/workspace $ cd mongodb
 
@@ -76,11 +55,11 @@ $ sudo apt-get install mongodb-org-server
 Do this in new terminal. You need to leave the database to be served to access it.
 
 ~~~~ {.bash}
-$ mongoimport --db Comments --collection Comments --mode upsert --upsertFields name --jsonArray --file ~/workspace/v5-resitev/app_server/models/comments-mongodb.json
+$ mongoimport --db Comments --collection Comments --mode upsert --upsertFields name --jsonArray --file ~/workspace/v6/app_server/models/comments-mongodb.json
 ~~~~
 
 ## Start the app
 ~~~~ {.bash}
-~/workspace (master) $ cd ~/workspace/v5
-~/workspace/v5 (master) $ npm start
+~/workspace (master) $ cd ~/workspace/v6
+~/workspace/v6 (master) $ npm start
 ~~~~
