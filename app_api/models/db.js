@@ -55,4 +55,3 @@ process.on('SIGTERM', function() {
 });
 
 require('./comments');
-require('./users');
