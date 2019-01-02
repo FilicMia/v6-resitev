@@ -11,3 +11,13 @@ passport.use(new localStrategy({
     function(username, pass, done){
         //todo
 }));
+
+// define in app.js
+/*
+require('./app_api/models/db');
+..
+
+var indexApi = require('./app_api/routes/index');
+...
+app.use(passport.initialize());
+*/
