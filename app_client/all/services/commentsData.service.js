@@ -17,8 +17,7 @@
       return $http.post('/api/comments/new', comment /*, {
         headers: {
           Authorization: 'Bearer ' + authentication.returnToken()
-        }*/
-      });
+        }}*/);
     };
   
     return {
