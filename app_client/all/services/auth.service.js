@@ -30,7 +30,14 @@
         //todo
       };
     var currUser = function() {
-        //todo
+        if (logedin()) {
+          var token = returnToken();
+          var content = JSON.parse($window.atob(token.split('.')[1]));
+          return {
+            mail: content.mail,
+            name: content.name
+          };
+        }
       };
 
     
