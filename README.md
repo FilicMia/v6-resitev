@@ -60,6 +60,7 @@ $ mongoimport --db Comments --collection Comments --mode upsert --upsertFields n
 
 ## Start the app
 ~~~~ {.bash}
+~/workspace (master) $ npm install -g nodemon
 ~/workspace (master) $ cd ~/workspace/v6
-~/workspace/v6 (master) $ npm start
+~/workspace/v6 (master) $ nodemon start
 ~~~~
