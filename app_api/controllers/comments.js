@@ -37,7 +37,7 @@ module.exports.createNew = function(req, res) {
     });
 };
 
-module.exports.getCommentsByName = function(req, res) {
+module.exports.getCommentByName = function(req, res) {
     Comment.find({
         name: req.query.name
     }, function(error, data){
@@ -49,7 +49,7 @@ module.exports.getCommentsByName = function(req, res) {
     });
 };
 
-module.exports.getCommentsById = function(req, res) {
+module.exports.getCommentById = function(req, res) {
     Comment.findById(
          req.params.idComment, function(error, data){
         if(error){
