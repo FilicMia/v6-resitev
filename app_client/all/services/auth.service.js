@@ -1,13 +1,13 @@
 (function() {
   function authentication($window, $http) {
-    /*var b64Utf8 = function (seq) {
+    var b64Utf8 = function (seq) {
       return decodeURIComponent(Array.prototype.map.call($window.atob(seq), function(c) {
         return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
       }).join(''));
-    };*/
+    };
     
     var storeToken = function(token) {
-      //todo
+      $window.localStorage['comments-token'] = token;
     };
     
     var returnToken = function() {
@@ -15,11 +15,17 @@
     };
     
     var registration = function(user) {
-      //todo
+      return $http.post('/api/registration', user).then(
+        function success(res) {
+          storeToken(res.data.token);
+        });
     };
 
     var login = function(user) {
-      //todo
+      return $http.post('/api/login', user).then(
+        function success(res) {
+          storeToken(res.data.token);
+        });
     };
 
     var logout = function() {
@@ -27,7 +33,13 @@
     };
     
     var logedin = function() {
-        //todo
+        var token = returnToken();
+        if (token) {
+          var content = JSON.parse($window.atob(token.split('.')[1]));
+          return content.validityDate > Date.now() / 1000;
+        } else {
+          return false;
+        }
       };
     var currUser = function() {
         if (logedin()) {
