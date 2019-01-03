@@ -1,4 +1,21 @@
-
+~~~~.js
+vm.newComment = function(){
+    //name: req.body.name,
+     //   comment: req.body.comment,
+     //   pic: req.body.pic,
+     vm.newcomment.pic = '';
+     commentsData.newComment(vm.newcomment).then(
+        function succes(response){
+          vm.msg = response.data.length > 0 ? "" : "No comments.";
+          vm.data.comments.push(response.data);
+          console.log(vm.data);
+        },
+        function error(response){
+          vm.msg = "Error while fetching comments.";
+          console.log(response.e);
+        });
+  };
+~~~~
 > Warning: For the LP4, be careful to meet prerequerities whithout which your work won't be scored: 
 >
 > 1. There is a *valid* commitment link submitted on učilnica (If you don't fell like bothering with giving a specific acess
