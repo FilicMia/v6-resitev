@@ -14,6 +14,16 @@ function provider($routeProvider, $locationProvider) {
         controller: 'commentsViewCtrl',
         controllerAs: 'vm'
     })
+    .when('/registration', {
+      templateUrl: '/auth/registration/registration.view.html',
+      controller: 'registrationCtrl',
+      controllerAs: 'vm'
+    })
+    .when('/login', {
+      templateUrl: '/auth/login/login.view.html',
+      controller: 'loginCtrl',
+      controllerAs: 'vm'
+    })
     .otherwise({
         controller: 'otherCtrl',
         template: '<div></div>'

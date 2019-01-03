@@ -1,5 +1,5 @@
 (function() {
-  function commentsData($http) {
+  function commentsData($http, authentication) {
     
     var data = function(){
         return $http.get('/api/comments');
@@ -14,10 +14,10 @@
     };
     
     var newComment = function(comment) {
-      return $http.post('/api/comments/new', comment /*, {
+      return $http.post('/api/comments/new', comment , {
         headers: {
           Authorization: 'Bearer ' + authentication.returnToken()
-        }}*/);
+        }});
     };
   
     return {
@@ -27,7 +27,7 @@
       'newComment': newComment
     };
   }
-  commentsData.$inject = ['$http'];
+  commentsData.$inject = ['$http', 'authentication'];
   
   /* global angular */
   angular

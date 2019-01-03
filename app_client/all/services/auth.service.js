@@ -7,7 +7,7 @@
     };*/
     
     var storeToken = function(token) {
-      //todo
+      $window.localStorage['comments-token'] = token;
     };
     
     var returnToken = function() {
@@ -22,7 +22,10 @@
     };
 
     var login = function(user) {
-      //todo
+      return $http.post('/api/login', user).then(
+        function success(data) {
+          storeToken(data.data.token);
+        });
     };
 
     var logout = function() {
@@ -30,7 +33,7 @@
     };
     
     var logedin = function() {
-        //todo
+        return $window.localStorage['comments-token'];
       };
     var currUser = function() {
         if (logedin()) {

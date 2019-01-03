@@ -22,6 +22,8 @@ function commentsCtrl(commentsData, $location, $scope) {
           function succes(response){
             vm.msg = response.data.length > 0 ? "" : "No comments.";
             vm.data.comments.push(response.data);
+            vm.newcomment.name = '';
+            vm.newcomment.comment = '';
             console.log(vm.data);
           },
           function error(response){

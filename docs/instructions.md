@@ -221,11 +221,11 @@ and init it after definition of `public` (static) folders adding following line
 
 ## API Access points
 
-To obtain `/login` and `/register` access points, we create separate 
+To obtain `/login` and `/registration` access points, we create separate 
 authentication handling router in file `app_api/controllers/authentication.js`
  
  
- ~~~~.js
+~~~~.js
 var passport = require('passport');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
@@ -236,28 +236,27 @@ var JSONcallback = function(res, status, msg) {
 };
 
 //rest TODO
- ~~~~
+~~~~
  
 The we define the authentication controller in the router of the API
 `var ctrlAuthentication = require('../controllers/authentication');`
   
 and set it to handle authentication routes.
 
-`app_api/routes/index.js`
-
+Add the following 
 ~~~~.js
 /* Authentication */
 router.post('/login', ctrlAuthentication.login);
 router.post('/registration',
                 ctrlAuthentication.register);
 ~~~~
-  
+to the `app_api/routes/index.js`, before `module.exports = router;` line.
 
 Implementation of login and register are the following.
 
 `app_api/controllers/authentication.js`
 
-```.js
+~~~~.js
 module.exports.login = function(req, res) {
     /* request consists of body with login data named usernameField: 'mail',
     passwordField: 'pass' as defined in `passport.js` */
@@ -289,13 +288,18 @@ module.exports.login = function(req, res) {
     )(req,res);
 };
 
-```
+~~~~
 For register handler we need to do following:
 
 * check for body fields: mail, pass and name,
 * create databace document of type `User` with password saved with 
  `storePassword` function,
 * save user to database with `user.save`,
+~~~~.js
+user.save(function(error,user){
+        //todo
+    });
+~~~~
 * on save sucess, we generate JWT token with `user.genJWT()` and render it with 
 `JSONcallback` function.
 
@@ -311,7 +315,7 @@ now building client side of the user authentication:
 
 1. copy `docs/src/auth` folder to `app_client`,
 2. add in `app_clien/app.js` routes to login and register,
-```.js
+~~~~.js
 .when('/registration', {
   templateUrl: '/auth/registration/registration.view.html',
   controller: 'registrationCtrl',
@@ -322,9 +326,9 @@ now building client side of the user authentication:
   controller: 'loginCtrl',
   controllerAs: 'vm'
 })
-```
+~~~~
 3. create custom auth service in `app_client/all/services/auth.service.js`,
-```.js
+~~~~.js
 (function() {
   function authentication($window, $http) {
     /*var b64Utf8 = function (seq) {
@@ -388,9 +392,9 @@ now building client side of the user authentication:
     .module('comments')
     .service('authentication', authentication);
 })();
-```
+~~~~
 4. add all those js files in main `app.js` file minify function:
-```
+~~~~.js
 var combinedCode = uglifyJs.minify({
   'app.js': fs.readFileSync('app_client/app.js', 'utf-8'),
   'commentsData.service.js': fs.readFileSync('app_client/all/services/commentsData.service.js', 'utf-8'),
@@ -407,8 +411,8 @@ var combinedCode = uglifyJs.minify({
   'footer.directive.js': fs.readFileSync('app_client/all/directives/footer/footer.directive.js', 'utf-8'),
   'nav.directive.js': fs.readFileSync('app_client/all/directives/nav/nav.directive.js', 'utf-8')
 });
-```
-5. add login/register to navigation
+~~~~
+5. add login/registration to navigation
 ```.html
 <nav class="navbar navbar-inverse">
         <div class="container-fluid">
@@ -424,8 +428,7 @@ var combinedCode = uglifyJs.minify({
 
 As there is no need to show registration link when loged in, 
 we change navigation template to the following.
-
-```.html
+~~~~.js
 <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header"><a class="navbar-brand" href="#">ComMENT TO BE</a></div>
@@ -442,10 +445,13 @@ we change navigation template to the following.
             </ul>
         </div>
 </nav>
-```
+~~~~
 
 and implement navigation controller that will check if the user is loged in 
-and handle logout as well.
+and handle logout as well. 
+Do not forget to add navigation controller's implementation to the
+minify process in main `app.js` and to declare its and its 
+`controllerAs`'s  usage in the `nav.directive.js`
 
 ## Restricting access to API access point
 
@@ -460,24 +466,31 @@ form in `comments.view.html`
 3. attach ng-model's to each inpuit field,
 4. as the function is already defined just test it.
 
-Now everyone can add comment. Let make it available only for loged in users.
+Now everyone can add a comment. Let make it available only for loged in users.
 
-1. In `commentsData` service, under `newComment` function, we add
+1. On the client side, in the `commentsData` service, under `newComment` function, we add
 one more parameter
-```.js
+~~~~.js
 headers: {
     Authorization: 'Bearer ' + authentication.returnToken()
   }
 }
-```
-2. we add middleware function to our API call:
-              * add ``` 
-                var jwt = require('express-jwt');
-                var authentication = jwt({
-                  secret: process.env.JWT_PASS,
-                  userProperty: 'payload'
-                });```
-to the `routes/index.js` before controllers.
-3. add middleware `authentication`.
+~~~~
+2. On the API side, we install `express-jwt` library with `npm install --save express-jwt`
+3. On the API side, we add middleware function to 
+in `app_api/routes/index.js` when attaching a
+route handler `ctrComments.createNew` to its route `'/comments/new'`:
+   
+  *  Definition: 
+~~~~.js
+var jwt = require('express-jwt');
+var authentication = jwt({
+  secret: process.env.JWT_PASS,
+  userProperty: 'payload'
+});
+~~~~
+in the `routes/index.js` before controllers' definition.
+  * Usage: `router.post('/comments/new', ctrComments.createNew);` line
+  becomes `router.post('/comments/new', authentication, ctrComments.createNew);`
 
 
