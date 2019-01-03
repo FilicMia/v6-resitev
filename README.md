@@ -1,4 +1,4 @@
-> Warning: For the LP4, be careful to meet prerequerities whithout which your work won't be scored: 
+> Warning: For LP4 & LP5, be careful to meet prerequerities whithout which your work won't be scored: 
 >
 > 1. There is a *valid* commitment link submitted on učilnica (If you don't fell like bothering with giving a specific acess
 >to the `AssistentFRI` just make your repository public after the submission deadline. :) )
