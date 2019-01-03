@@ -1,9 +1,10 @@
 (function() {
-  function commentsViewCtrl($routeParams, commentsData, $uibModal) {
+  function commentsViewCtrl($routeParams, commentsData, $uibModal, authentication) {
     var vm = this;
     
 
     vm.idComment = $routeParams.idComment;
+    vm.logedin = authentication.logedin();
     
     commentsData.commentById(vm.idComment)
     .then(function success(response) {
@@ -43,7 +44,7 @@
         
       };
   }
-  commentsViewCtrl.$inject = ["$routeParams", "commentsData", "$uibModal"];
+  commentsViewCtrl.$inject = ["$routeParams", "commentsData", "$uibModal", "authentication"];
   
   /* global angular */
   angular
