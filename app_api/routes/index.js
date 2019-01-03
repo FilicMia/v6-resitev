@@ -14,11 +14,12 @@ var ctrlAuthentication = require('../controllers/authentication');
 /* Comments */
 router.get('/comments', ctrComments.getAll);
 router.post('/comments/new', authentication, ctrComments.createNew);
-router.post('/comments/edit/:idComment', 
+router.post('/comments/edit/:idComment', authentication,
                 ctrComments.editComment);
 router.get('/comments/:idComment', ctrComments.getCommentById);
 router.get('/comments/search', ctrComments.getCommentByName);
-router.delete('/comments/:idComment', ctrComments.deleteCommentById);
+router.delete('/comments/:idComment', authentication,
+        ctrComments.deleteCommentById);
 
 /* User */
 router.get('/users', ctrlUsers.getAll);

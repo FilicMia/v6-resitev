@@ -10,7 +10,7 @@
 <div class="col-md-10 col-sm-10">
   
   <div class="panel panel-default arrow left">
-    <div class="panel-body" ng-click="onclick({ myVal: value })">
+    <div class="panel-body" ng-click="onclick()">
       <header class="text-left">
         <div class="comment-user"><i class="fa fa-user"></i>{{ commentdirective.name }}</div>
         <time class="comment-date" datetime="16-12-2014 01:05">
@@ -22,12 +22,12 @@
         </p>
       </div>
     </div>
-    <div class="panel-footer">
-      <form class=" navbar-form navbar-left" method="post">
+    <div class="panel-footer" ng-show='commdirvm.logedin && commdirvm.landing'>
+      <form class=" navbar-form navbar-left" ng-submit="commdirvm.deleteById(commentdirective._id)">
         <div class="form-group">
           <input class="form-control hidden" type="text" value="{{commentdirective._id}}" name="_id"/>
         </div>
-        <button class="btn btn-default" id="delete" type="Submit">Delete</button>
+        <button class="btn btn-default" id="delete" type="submit">Delete</button>
       </form>
       <div class="clearfix"></div>
     </div>

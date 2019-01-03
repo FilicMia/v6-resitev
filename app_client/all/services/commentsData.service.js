@@ -10,7 +10,10 @@
     };
     
     var editCommentById = function(id, comment) {
-      return $http.post('/api/comments/edit/' + id, comment);
+      return $http.post('/api/comments/edit/' + id, comment, {
+        headers: {
+          Authorization: 'Bearer ' + authentication.returnToken()
+        }});
     };
     
     var newComment = function(comment) {
@@ -19,11 +22,20 @@
           Authorization: 'Bearer ' + authentication.returnToken()
         }});
     };
+    
+    var deleteById = function(id) {
+      return $http.delete('/api/comments/' + id, {
+        headers: {
+          Authorization: 'Bearer ' + authentication.returnToken()
+        }
+      });
+    };
   
     return {
       'comments': data,
       'commentById': commentById,
       'editCommentById': editCommentById,
+      'deleteById': deleteById,
       'newComment': newComment
     };
   }

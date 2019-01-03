@@ -33,7 +33,13 @@
     };
     
     var logedin = function() {
-        return $window.localStorage['comments-token'];
+        var token = returnToken();
+        if (token) {
+          var content = JSON.parse($window.atob(token.split('.')[1]));
+          return content.validityDate > Date.now() / 1000;
+        } else {
+          return false;
+        }
       };
     var currUser = function() {
         if (logedin()) {

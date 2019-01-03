@@ -14,7 +14,8 @@
 
   </section>
   
-  <div class="container">
+  <!-- show only to the logedin users -->
+  <div class="container" ng-show='vm.logedin'>
     <div class="widget-area no-padding blank">
         <div class="status-upload">
             <form id="commentForma" ng-submit='vm.newComment()' role="form">

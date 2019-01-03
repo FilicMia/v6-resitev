@@ -8,7 +8,9 @@
             scope: {commentdirective: "=onecomment",
                     onclick: "&onclickf"
             },
-            templateUrl: "/all/directives/comment/comment.view.html"
+            templateUrl: "/all/directives/comment/comment.view.html",
+            controller: "commentDirCtrl",
+            controllerAs: "commdirvm"
             
         };
     };

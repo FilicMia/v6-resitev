@@ -1,8 +1,11 @@
 (function() {
-function commentsCtrl(commentsData, $location, $scope) {
+function commentsCtrl(commentsData, $location, $scope, authentication) {
   var vm = this;
   vm.title = 'Comments';
   vm.msg = "Searching comments...";
+  
+  vm.logedin = authentication.logedin();
+  
   commentsData.comments().then(
     function succes(response){
       vm.msg = response.data.length > 0 ? "" : "No comments.";
@@ -37,7 +40,7 @@ function commentsCtrl(commentsData, $location, $scope) {
          $location.url('/comments/'+comment._id);
         };
 }
-commentsCtrl.$inject = ['commentsData', '$location', '$scope'];
+commentsCtrl.$inject = ['commentsData', '$location', '$scope', 'authentication'];
 
 /* global angular */
 angular

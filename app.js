@@ -22,6 +22,7 @@ var combinedCode = uglifyJs.minify({
   'other.controller.js': fs.readFileSync('app_client/other.controller.js', 'utf-8'),
   'commentView.controller.js': fs.readFileSync('app_client/comments/commentViewing/commentView.controller.js', 'utf-8'),
   'commentEdit.controller.js': fs.readFileSync('app_client/comments/commentEdit/commentEdit.controller.js', 'utf-8'),
+  'comment.controller.js': fs.readFileSync('app_client/all/directives/comment/comment.controller.js', 'utf-8'),
   'comment.directive.js': fs.readFileSync('app_client/all/directives/comment/comment.directive.js', 'utf-8'),
   'footer.directive.js': fs.readFileSync('app_client/all/directives/footer/footer.directive.js', 'utf-8'),
   'nav.controller.js': fs.readFileSync('app_client/all/directives/nav/nav.controller.js', 'utf-8'),
