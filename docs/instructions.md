@@ -465,11 +465,10 @@ Now everyone can add comment. Let make it available only for loged in users.
 1. In `commentsData` service, under `newComment` function, we add
 one more parameter
 ```.js
-
-        headers: {
-          Authorization: 'Bearer ' + authentication.returnToken()
-        }
-      }
+headers: {
+    Authorization: 'Bearer ' + authentication.returnToken()
+  }
+}
 ```
 2. we add middleware function to our API call:
               * add ``` 
