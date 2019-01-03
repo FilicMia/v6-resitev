@@ -210,10 +210,10 @@ Then we also add it to the root `app.js` file at 32nd and 35th line.
 `app.js`
 
 ~~~~.js
-var passport = require('passport'); // 32 line
+var passport = require('passport'); // 38 line
 
 require('./app_api/models/db');
-require('./app_api/configuration/passport'); // 35 line
+require('./app_api/configuration/passport'); // 32 line
 ~~~~
 
 and init it after definition of `public` (static) folders adding following line
@@ -323,7 +323,7 @@ now building client side of the user authentication:
   controllerAs: 'vm'
 })
 ```
-3. create custom auth service in `app_client/all/services/auth.js`,
+3. create custom auth service in `app_client/all/services/auth.service.js`,
 ```.js
 (function() {
   function authentication($window, $http) {
@@ -342,7 +342,10 @@ now building client side of the user authentication:
     };
     
     var registration = function(user) {
-      //todo
+      return $http.post('/api/registration', user).then(
+        function success(data) {
+          storeToken(data.data.token);
+        });
     };
 
     var login = function(user) {
