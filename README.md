@@ -1,6 +1,6 @@
 # SOLUTION 
 More detailed instructions how to get commit `4a197a0` to the commit `c8ccb95` can be found under 
-[`docs/solution.md`](https://bitbucket.org/mfilic/v6-resitev/src/master/docs/instructions.md).
+[`docs/instructions.md`](https://bitbucket.org/mfilic/v6-resitev/src/master/docs/instructions.md).
 It explaines what we did on excercises.
 
 The minimal solution to `v6` is up to the [commit](https://bitbucket.org/mfilic/v5-resitev/commits/c8ccb95):
