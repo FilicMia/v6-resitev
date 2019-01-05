@@ -428,7 +428,7 @@ var combinedCode = uglifyJs.minify({
 
 As there is no need to show registration link when loged in, 
 we change navigation template to the following.
-~~~~.js
+```html
 <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header"><a class="navbar-brand" href="#">ComMENT TO BE</a></div>
@@ -445,7 +445,7 @@ we change navigation template to the following.
             </ul>
         </div>
 </nav>
-~~~~
+```
 
 and implement navigation controller that will check if the user is loged in 
 and handle logout as well. 
